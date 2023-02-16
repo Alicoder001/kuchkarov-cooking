@@ -38,6 +38,7 @@ const Create = () => {
 				<span className="text-lg">Ingradient : *</span> <br />
 				<div className="w-full flex items-center gap-2">
 					<input
+						id="input"
 						className="w-full placeholder:text-zinc-300   mt-2 text-xl text-teal-0 rounded bg-slate-400 p-3 shadow-lg duration-300 shadow-black/50 hover:shadow-black outline-none"
 						placeholder="ingradient"
 						onChange={(e) => {
@@ -51,6 +52,7 @@ const Create = () => {
 							ing.length !== 0 &&
 								!ingredient.includes(ing) &&
 								handleIng(ing);
+							document.getElementById("input").innerHTML = "";
 						}}
 						className="  mt-2 px-4 py-3 text-xl font-bold shadow-lg duration-300 shadow-black/25 hover:shadow-black inline-block bg-teal-600 rounded">
 						Add
