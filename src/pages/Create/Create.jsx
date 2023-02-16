@@ -49,10 +49,11 @@ const Create = () => {
 					<button
 						onClick={(e) => {
 							e.preventDefault();
-							ing.length !== 0 &&
+							ing &&
+								ing.length !== 0 &&
 								!ingredient.includes(ing) &&
 								handleIng(ing);
-							document.getElementById("input").innerHTML = "";
+							document.getElementById("input").value = "";
 						}}
 						className="  mt-2 px-4 py-3 text-xl font-bold shadow-lg duration-300 shadow-black/25 hover:shadow-black inline-block bg-teal-600 rounded">
 						Add
