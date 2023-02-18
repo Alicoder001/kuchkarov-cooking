@@ -25,6 +25,7 @@ const Recipe = () => {
 							{data.ingredients.map((ing) => {
 								return (
 									<span className="" key={ing}>
+										{" "}
 										{ing}
 										{"  "}
 									</span>
