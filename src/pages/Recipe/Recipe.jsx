@@ -26,6 +26,7 @@ const Recipe = () => {
 								return (
 									<span className="" key={ing}>
 										{ing}
+										{"  "}
 									</span>
 								);
 							})}
