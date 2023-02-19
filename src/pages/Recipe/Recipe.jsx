@@ -36,7 +36,12 @@ const Recipe = () => {
 							<span className="bg-teal-900 italic  p-1 text-white rounded">
 								Methods :
 							</span>
-							<span>{data.method}...</span>
+							<span>
+								{data.method.length > 30
+									? data.method.substring(0, 30)
+									: data.method}
+								...
+							</span>
 						</div>
 					</div>
 					<Link
