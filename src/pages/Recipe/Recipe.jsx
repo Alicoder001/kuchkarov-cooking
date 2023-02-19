@@ -37,9 +37,7 @@ const Recipe = () => {
 								Methods :
 							</span>
 							<span>
-								{data.method.length > 30
-									? data.method.substring(0, 30)
-									: data.method}
+								{data.method}
 								...
 							</span>
 						</div>

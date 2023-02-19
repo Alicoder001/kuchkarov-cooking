@@ -10,7 +10,12 @@ const CookingItem = ({ item }) => {
 				<p className=" text-teal-100 text-xl mb-2">
 					<span className="italic">{item.cookingTime}</span>⏱️
 				</p>
-				<p>{item.method}...</p>
+				<p>
+					{item.method && item.method.length > 100
+						? item.method.substring(0, 100)
+						: item.method}
+					...
+				</p>
 			</div>
 			<Link
 				className="mb-3 bg-teal-200 font-semibold duration-300 px-5 py-1 rounded text-gray-800 hover:shadow-lg hover:shadow-black/40 "
