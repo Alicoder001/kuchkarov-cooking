@@ -2,7 +2,7 @@
 module.exports = {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	presets: [],
-	darkMode: "media", // or 'class'
+	darkMode: "class", // or 'class'
 	theme: {
 		accentColor: ({ theme }) => ({
 			...theme("colors"),
@@ -761,6 +761,7 @@ module.exports = {
 			90: ".9",
 			95: ".95",
 			100: "1",
+			102: "1.02",
 			105: "1.05",
 			110: "1.1",
 			125: "1.25",

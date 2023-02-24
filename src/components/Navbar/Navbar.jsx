@@ -1,8 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../hooks/useTheme";
 const Navbar = () => {
+	const { color, changeColor } = useTheme();
+	console.log(color);
 	return (
-		<div className=" bg-slate-600 shadow-lg shadow-black/50 mb-5">
+		<div
+			style={{ background: color }}
+			onClick={() => {
+				changeColor("green");
+			}}
+			className=" bg-slate-600 shadow-lg shadow-black/50 mb-5">
 			<nav className="flex justify-between max-w-screen-lg mx-auto py-4">
 				<Link to={"/"}>
 					<h1 className="font-bold text-teal-200">
