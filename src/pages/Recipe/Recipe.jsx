@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import { useItem } from "../../firebase/config";
 const Recipe = () => {
 	const { id } = useParams();
-	const { data, error, pending } = useFetch(
-		`http://localhost:3000/recipes/${id}`
-	);
-
+	const { data, pending, error,getItem } = useItem(id);
+	useEffect(()=>{
+		getItem()
+	},[])
+	
 	return (
 		<>
+			{pending && <div>loading</div>}
 			{data && (
 				<div className="max-w-2xl p-10 rounded bg-slate-600 shadow-lg shadow-black flex items-center justify-between flex-col mx-auto">
 					<div className="flex items-center flex-col mb-3">

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-
+import { useAddData } from "../../firebase/config";
 const Create = () => {
+	const { addItem } = useAddData();
 	const navigate = useNavigate();
 	const [data, setData] = useState({
 		title: "",
@@ -10,15 +11,8 @@ const Create = () => {
 		method: "",
 		cookingTime: "",
 	});
-
 	const [ingredient, setIngredient] = useState("");
 
-	const {
-		data: recipies,
-		pending,
-		error,
-		getOption,
-	} = useFetch("http://localhost:3000/recipes", "POST");
 	const handleIng = (e) => {
 		e.preventDefault();
 		if (!data.ingredients.includes(ingredient)) {
@@ -33,23 +27,32 @@ const Create = () => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		getOption(data);
-		setData({
-			title: "",
-			ingredients: [],
-			method: "",
-			cookingTime: "",
-		});
-	};
-	useEffect(() => {
-		if (recipies && !error) {
-			navigate("/");
+		if (
+			!data.title == "" &&
+			!data.method == "" &&
+			!data.ingredients == [] &&
+			!data.cookingTime == ""
+		) {
+			addItem(data)
+				.then(() => {
+					navigate("/");
+				})
+				.catch(() => {
+					console.log("xato");
+				});
+			setData({
+				title: "",
+				ingredients: [],
+				method: "",
+				cookingTime: "",
+			});
 		}
-	}, [recipies, navigate, error]);
+	};
+
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="max-w-xl mb-4 bg-slate-500 mx-auto rounded px-5 py-10 flex flex-col items-center">
+			className="max-w-xl mb-10 bg-slate-500 mx-auto rounded px-5 py-10 flex flex-col items-center">
 			<label className="w-full mb-5">
 				<span className="text-lg">Title : *</span> <br />
 				<input

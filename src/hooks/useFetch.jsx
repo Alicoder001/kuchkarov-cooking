@@ -15,7 +15,7 @@ const useFetch = (url, method = "GET") => {
 			body: JSON.stringify(data),
 		});
 	};
-
+	
 	const getData = async (fetchOptions) => {
 		setPending(true);
 		try {
@@ -44,4 +44,3 @@ const useFetch = (url, method = "GET") => {
 	return { data, pending, error, getOption };
 };
 export default useFetch;
- 

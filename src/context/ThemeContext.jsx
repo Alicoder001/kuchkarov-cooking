@@ -12,15 +12,15 @@ const handleState = (state, action) => {
 	}
 };
 const ThemeProvider = ({ children }) => {
-	const [state, dipatch] = useReducer(handleState, {
+	const [state, dispatch] = useReducer(handleState, {
 		color: "#B3005E",
 		mode: "dark",
 	});
 	const changeColor = (color) => {
-		dipatch({ type: "change-color", payload: color });
+		dispatch({ type: "change-color", payload: color });
 	};
 	const changeMode = (mode) => {
-		dipatch({ type: "change-mode", payload: mode });
+		dispatch({ type: "change-mode", payload: mode });
 	};
 	return (
 		<ThemeContext.Provider value={{ ...state, changeColor, changeMode }}>
